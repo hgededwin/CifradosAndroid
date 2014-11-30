@@ -8,7 +8,6 @@ import com.cifrados.metodos.CodigoVernam;
 import com.cifrados.metodos.CodigoVigenere;
 import com.example.nuevo.R;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -175,6 +174,53 @@ public class MainActivity extends Activity{
 				}
 
 			}	
+		});
+		
+		btnDescifrartxt.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				String txt_a_cifrar=edtxTexto.getText().toString();
+		        String txt_clave=edtxClave.getText().toString();
+		        char[] array_texto=txt_a_cifrar.toCharArray();
+		        char [] array_clave=txt_clave.toCharArray();
+		        
+		        switch (item) {
+				case R.id.rbCesar:
+					 char[] resulcesar=cesar.Descifrado(array_texto);
+			            edtxResultado.setText(String.valueOf(resulcesar));
+					break;
+				case R.id.rbplayfair:
+					try {
+						char[] resulplayfair=playfair.Descifrado(array_texto,array_clave);
+		                edtxResultado.setText(String.valueOf(resulplayfair));
+					} catch (Exception e) {
+						Toast.makeText(getApplicationContext(), "No sé qué coños pasé aquí", Toast.LENGTH_LONG).show();
+					}
+	                break;
+				case R.id.rbVernam:
+					String[] resul=vernam.Cifrado(array_texto,array_clave);
+	                char[] resul2 = new char[(resul.length*9)];
+	                int sum=0;
+	                System.out.println("");
+	                for (int i = 0; i < resul.length; i++) {
+	                    for (int j = 0; j < 9; j++) {
+	                        resul2[sum]=resul[i].charAt(j);
+	                        System.out.println(""+resul2[sum]);
+	                        sum++;
+	                    }
+	                }
+	                edtxResultado.setText(String.valueOf(resul2));
+	                break;
+				case R.id.rbVigenere:
+					char[] resulvigenere=lotes.Descifrado(array_texto,array_clave);
+	                edtxResultado.setText(String.valueOf(resulvigenere));
+				default:
+				
+					break;
+				}
+			}
 		});
 	}
 
