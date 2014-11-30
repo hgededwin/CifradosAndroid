@@ -1,0 +1,117 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <EditText
+        android:id="@+id/txtTexto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="32dp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtTexto"
+        android:layout_alignBottom="@+id/txtTexto"
+        android:layout_toLeftOf="@+id/txtClave"
+        android:text="Texto:" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/txtTexto"
+        android:layout_marginTop="44dp"
+        android:text="Clave:" />
+
+    <EditText
+        android:id="@+id/txtClave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignLeft="@+id/txtTexto"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/txtResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtClave"
+        android:layout_below="@+id/txtClave"
+        android:layout_marginTop="39dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtResultado"
+        android:layout_alignRight="@+id/textView2"
+        android:text="Resultado:" />
+
+    <Button
+        android:id="@+id/btnDescifrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="Descifrar" />
+
+    <Button
+        android:id="@+id/btnCifrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnDescifrar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="Cifrar" />
+
+     <RadioGroup
+         android:id="@+id/rdgGrupo"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_above="@+id/btnCifrar"
+         android:layout_centerHorizontal="true"
+         android:layout_marginBottom="15dp"
+         android:orientation="vertical" >
+
+         <RadioButton
+             android:id="@+id/rbCesar"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="cesar" />
+
+         <RadioButton
+             android:id="@+id/rbplayfair"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="playfair" />
+
+         <RadioButton
+             android:id="@+id/rbVigenere"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginRight="31dp"
+             android:text="vigenere" />
+
+         <RadioButton
+             android:id="@+id/rbVernam"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="vernam" />
+     </RadioGroup>
+
+</RelativeLayout>
