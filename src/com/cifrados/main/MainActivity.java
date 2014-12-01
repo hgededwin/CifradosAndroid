@@ -8,17 +8,25 @@ import com.cifrados.metodos.CodigoVernam;
 import com.cifrados.metodos.CodigoVigenere;
 import com.example.nuevo.R;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.Window;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 
@@ -61,6 +69,39 @@ public class MainActivity extends Activity{
 		
 		edtxResultado.setEnabled(false);
 		edtxClave.setEnabled(false);
+		
+		edtxResultado.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				
+				if(!edtxResultado.getText().toString().trim().isEmpty()){
+					Toast.makeText(getApplicationContext(), "Texto copiado", Toast.LENGTH_SHORT).show();
+					ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+					ClipData clip = ClipData.newPlainText("Texto", edtxResultado.getText().toString());
+					clipboard.setPrimaryClip(clip);
+				}else{
+					Toast.makeText(getApplicationContext(), "No hay nada qué copiar", Toast.LENGTH_SHORT).show();
+				}
+				return true;
+			}
+		});
+		
+//		edtxResultado.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				if(!edtxResultado.getText().toString().trim().isEmpty()){
+//					ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+//					ClipData clip = ClipData.newPlainText("Texto", edtxResultado.getText().toString());
+//					clipboard.setPrimaryClip(clip);
+//				}else{
+//					Toast.makeText(getApplicationContext(), "No hay nada qué copiar", Toast.LENGTH_SHORT).show();
+//				}
+//			}
+//		});
 		
 		rdgeneral.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
@@ -166,8 +207,7 @@ public class MainActivity extends Activity{
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Ingresa el texto");
 						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
-					}
-					else if("".equals(edtxClave.getText().toString())){
+					}else if("".equals(edtxClave.getText().toString())){
 						edtxClave.setError("Ingresa la clave");
 						Toast.makeText(getApplicationContext(), "¡Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
@@ -210,16 +250,15 @@ public class MainActivity extends Activity{
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Ingresa el texto");
 						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a descifrar!", Toast.LENGTH_LONG).show();
-					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+					}else if("".equals(edtxClave.getText().toString())){
 						edtxClave.setError("Ingresa la clave");
-						Toast.makeText(getApplicationContext(), "¡Ingresa la clave del texto!", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "¡Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
 					try {
 						char[] resulplayfair=playfair.Descifrado(array_texto,array_clave);
 		                edtxResultado.setText(String.valueOf(resulplayfair));
 					} catch (Exception e) {
-						Toast.makeText(getApplicationContext(), "No sé qué coños pase aquí", Toast.LENGTH_LONG).show();
-					}
+				}
 	                break;
 				case R.id.rbVernam:
 					//Error aquí
@@ -252,18 +291,24 @@ public class MainActivity extends Activity{
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Escribe el texto");
 						Toast.makeText(getApplicationContext(), "¡Escribe el texto a descifrar", Toast.LENGTH_LONG).show();
-					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+					}else if("".equals(edtxClave.getText().toString())){
 						edtxClave.setError("Ingresa la clave");
-						Toast.makeText(getApplicationContext(), "¡Ingresa la clave del texto", Toast.LENGTH_LONG);
+						Toast.makeText(getApplicationContext(), "¡Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
-					char[] resulvigenere=lotes.Descifrado(array_texto,array_clave);
-	                edtxResultado.setText(String.valueOf(resulvigenere));
+					try {
+						char[] resulvigenere=lotes.Descifrado(array_texto,array_clave);
+		                edtxResultado.setText(String.valueOf(resulvigenere));
+					} catch (Exception e) {
+					}
+					break;
 				default:
 					Toast.makeText(getApplicationContext(), "No has seleccionado ningún método", Toast.LENGTH_LONG).show();
 					break;
 				}
 			}
 		});
+		
+		
 		
 	}
 	
