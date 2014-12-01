@@ -9,8 +9,10 @@ import com.cifrados.metodos.CodigoVigenere;
 import com.example.nuevo.R;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -40,6 +42,7 @@ public class MainActivity extends Activity{
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
@@ -188,18 +191,42 @@ public class MainActivity extends Activity{
 		        
 		        switch (item) {
 				case R.id.rbCesar:
+					if("".equals(edtxTexto.getText().toString())){
+						edtxTexto.setError("Ingresa el texto");
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a descifrar!", Toast.LENGTH_LONG).show();
+					}
 					 char[] resulcesar=cesar.Descifrado(array_texto);
 			            edtxResultado.setText(String.valueOf(resulcesar));
 					break;
 				case R.id.rbplayfair:
+					if("".equals(edtxTexto.getText().toString())){
+						edtxTexto.setError("Ingresa el texto");
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a descifrar!", Toast.LENGTH_LONG).show();
+					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+						edtxClave.setError("Ingresa la clave");
+						Toast.makeText(getApplicationContext(), "¡Ingresa la clave del texto!", Toast.LENGTH_LONG).show();
+					}
 					try {
 						char[] resulplayfair=playfair.Descifrado(array_texto,array_clave);
 		                edtxResultado.setText(String.valueOf(resulplayfair));
 					} catch (Exception e) {
-						Toast.makeText(getApplicationContext(), "No sé qué coños pasé aquí", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "No sé qué coños pase aquí", Toast.LENGTH_LONG).show();
 					}
 	                break;
 				case R.id.rbVernam:
+					//Error aquí
+					if("".equals(edtxTexto.getText().toString())){
+						edtxTexto.setError("Ingresa el texto");
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a descifrar!", Toast.LENGTH_LONG).show();
+					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+						Toast.makeText(getApplicationContext(), "¡Ingresa la clave del texto!", Toast.LENGTH_LONG).show();
+					}else if(txt_a_cifrar.length()>10){
+						Toast.makeText(getApplicationContext(), "El texto no puede ser mayor a 10 caracteres", Toast.LENGTH_LONG).show();
+					}else if(txt_clave.length()>10){
+						Toast.makeText(getApplicationContext(), "La clave no puede ser mayor a 10 caracteres", Toast.LENGTH_LONG).show();
+					}else if(txt_clave.length() != txt_a_cifrar.length()){
+						Toast.makeText(getApplicationContext(), "El texto y la clave deben tener la misma longitud", Toast.LENGTH_LONG).show();
+					}
 					String[] resul=vernam.Cifrado(array_texto,array_clave);
 	                char[] resul2 = new char[(resul.length*9)];
 	                int sum=0;
@@ -214,15 +241,22 @@ public class MainActivity extends Activity{
 	                edtxResultado.setText(String.valueOf(resul2));
 	                break;
 				case R.id.rbVigenere:
+					if("".equals(edtxTexto.getText().toString())){
+						edtxTexto.setError("Escribe el texto");
+						Toast.makeText(getApplicationContext(), "¡Escribe el texto a descifrar", Toast.LENGTH_LONG).show();
+					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+						edtxClave.setError("Ingresa la clave");
+						Toast.makeText(getApplicationContext(), "¡Ingresa la clave del texto", Toast.LENGTH_LONG);
+					}
 					char[] resulvigenere=lotes.Descifrado(array_texto,array_clave);
 	                edtxResultado.setText(String.valueOf(resulvigenere));
 				default:
-				
+					Toast.makeText(getApplicationContext(), "No has seleccionado ningún método", Toast.LENGTH_LONG).show();
 					break;
 				}
 			}
 		});
+		
 	}
-
-		        
+	
 }
