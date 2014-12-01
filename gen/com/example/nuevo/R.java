@@ -25,11 +25,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_launcher=0x7f020000;
         public static final int rounded_btn=0x7f020001;
         public static final int rounded_btngroup=0x7f020002;
-        public static final int rounded_edtxt=0x7f020003;
     }
     public static final class id {
-        public static final int btnCifrar=0x7f07000b;
-        public static final int btnDescifrar=0x7f07000c;
+        public static final int btnCifrar=0x7f07000c;
+        public static final int btnDescifrar=0x7f07000b;
         public static final int lyout=0x7f070000;
         public static final int rbCesar=0x7f070006;
         public static final int rbVernam=0x7f070009;

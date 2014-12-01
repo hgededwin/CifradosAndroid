@@ -137,66 +137,62 @@
 
             </RadioGroup>
         </LinearLayout>
-
-
-
-
     </LinearLayout>
 
-    <EditText
+    <TextView
         android:id="@+id/txtResultado"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_edtxt"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:textColor="#FFF"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDescifrar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:textColor="#F44336"
         android:textStyle="bold"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:ems="10" />
+        android:textSize="20sp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/btnCifrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_alignLeft="@+id/txtResultado"
-        android:layout_alignRight="@+id/txtResultado"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/rounded_btn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_below="@+id/lyout"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/rounded_btn"
+        android:text="Cifrar"
         android:textColor="#FFF"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Cifrar" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnDescifrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnCifrar"
-        android:layout_alignRight="@+id/txtResultado"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_below="@+id/btnCifrar"
+        android:layout_marginTop="23dp"
         android:background="@drawable/rounded_btn"
+        android:text="Descifrar"
         android:textColor="#FFF"
-        android:textStyle="bold"
         android:textSize="20sp"
-        android:text="Descifrar" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/txtResultado"
+        android:layout_below="@+id/btnDescifrar"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Resultado:" />
+        android:layout_marginTop="25dp"
+        android:text="Resultado:"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

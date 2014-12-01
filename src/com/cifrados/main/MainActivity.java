@@ -12,6 +12,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -43,7 +44,8 @@ public class MainActivity extends Activity{
     int tamMatriz=0, determ=0, inversaDeterm=0;
     int [][]matrizA = new int [25][25];
     
-    EditText edtxTexto, edtxClave, edtxResultado;
+    EditText edtxTexto, edtxClave;
+    TextView edtxResultado;
     Button btnCifrartxt, btnDescifrartxt;
     
     RadioButton rdbCesar, rdbPlayfair, rdbVigenere, rdbVernam;
@@ -58,7 +60,7 @@ public class MainActivity extends Activity{
 		
 		edtxTexto = (EditText)findViewById(R.id.txtTexto);
 		edtxClave = (EditText)findViewById(R.id.txtClave);
-		edtxResultado = (EditText)findViewById(R.id.txtResultado);
+		edtxResultado = (TextView)findViewById(R.id.txtResultado);
 		btnCifrartxt = (Button)findViewById(R.id.btnCifrar);
 		btnDescifrartxt = (Button)findViewById(R.id.btnDescifrar);
 		rdbCesar = (RadioButton)findViewById(R.id.rbCesar);
@@ -67,29 +69,23 @@ public class MainActivity extends Activity{
 		rdbVigenere = (RadioButton)findViewById(R.id.rbVigenere);
 		rdgeneral = (RadioGroup)findViewById(R.id.rdgGrupo);
 		
-		edtxResultado.setEnabled(false);
 		edtxClave.setEnabled(false);
 		
-		//Esto está en pruebas.
-		
+		edtxResultado.setInputType(InputType.TYPE_NULL);
 		edtxResultado.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
+				Log.e("Entrando", "Al ontouch");
 				
-				if(!edtxResultado.getText().toString().trim().isEmpty()){
-					Toast.makeText(getApplicationContext(), "Texto copiado", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "Texto copiado al portapapeles", Toast.LENGTH_SHORT).show();
 					ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
 					ClipData clip = ClipData.newPlainText("Texto", edtxResultado.getText().toString());
 					clipboard.setPrimaryClip(clip);
-				}else{
-					Toast.makeText(getApplicationContext(), "No hay nada qué copiar", Toast.LENGTH_SHORT).show();
-				}
 				return true;
 			}
 		});
-		//^^^^^^^^^^^^^^^^^^^^^^
 		
 		rdgeneral.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
@@ -135,7 +131,6 @@ public class MainActivity extends Activity{
 		        String txt_clave= edtxClave.getText().toString();
 		        char[] array_texto=txt_a_cifrar.toCharArray();
 		        char [] array_clave=txt_clave.toCharArray();
-		        int ocurre = 0;
 		        switch (item) {
 		        
 				case R.id.rbCesar:
