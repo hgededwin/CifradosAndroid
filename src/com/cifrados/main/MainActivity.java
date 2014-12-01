@@ -71,12 +71,9 @@ public class MainActivity extends Activity{
 		rdbVernam = (RadioButton)findViewById(R.id.rbVernam);
 		rdbVigenere = (RadioButton)findViewById(R.id.rbVigenere);
 		rdgeneral = (RadioGroup)findViewById(R.id.rdgGrupo);
-		
 		edtxClave.setEnabled(false);
 		
 		edtxResultado.setInputType(InputType.TYPE_NULL);
-		//Esto est�� en pruebas.
-		
 		edtxResultado.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
@@ -88,9 +85,6 @@ public class MainActivity extends Activity{
 					ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
 					ClipData clip = ClipData.newPlainText("Texto", edtxResultado.getText().toString());
 					clipboard.setPrimaryClip(clip);
-				}else{
-					Toast.makeText(getApplicationContext(), "No hay nada que copiar", Toast.LENGTH_SHORT).show();
-				}
 				return true;
 			}
 		});
@@ -105,21 +99,26 @@ public class MainActivity extends Activity{
 				case R.id.rbCesar:
 					if(rdbCesar.isChecked()){
 						edtxClave.setEnabled(false);
+						btnDescifrartxt.setVisibility(View.VISIBLE);
 					}
 					break;
 				case R.id.rbplayfair:
 					if(rdbPlayfair.isChecked()){
 						edtxClave.setEnabled(true);
+						btnDescifrartxt.setVisibility(View.VISIBLE);
+
 					}
 					break;
 				case R.id.rbVernam:
 					if(rdbVernam.isChecked()){
 						edtxClave.setEnabled(true);
+						btnDescifrartxt.setVisibility(View.INVISIBLE);
 					}
 					break;
 				case R.id.rbVigenere:
 					if(rdbVigenere.isChecked()){
 						edtxClave.setEnabled(true);
+						btnDescifrartxt.setVisibility(View.VISIBLE);
 					}
 					break;
 				default:
