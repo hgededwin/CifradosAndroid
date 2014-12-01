@@ -120,7 +120,7 @@ public class MainActivity extends Activity{
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Escribe el texto");
 						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
-					}else if("".equals(edtxClave.getText().toString())){
+					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
 						edtxClave.setError("Escribe la clave");
 						Toast.makeText(getApplicationContext(), "'Ingresa la clave!", Toast.LENGTH_LONG);
 					}
@@ -136,12 +136,10 @@ public class MainActivity extends Activity{
 				case R.id.rbVernam:
 					if("".equals(edtxTexto.getText())){
 						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
-		            }else if("".equals(edtxTexto.getText())){
+		            }else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
 		            	Toast.makeText(getApplicationContext(), "¡Ingresa la clave", Toast.LENGTH_LONG).show();
 		            }else if(txt_a_cifrar.length()>10){
 		            	Toast.makeText(getApplicationContext(), "La longitud no puede ser mayor a 10", Toast.LENGTH_LONG).show();
-		            }else if ("".equals(edtxTexto.getText())) {
-		            	Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
 		            }else if(txt_clave.length()>10){
 		            	Toast.makeText(getApplicationContext(), "La longitud no puede ser mayor a 10", Toast.LENGTH_LONG).show();
 		            }else if(txt_clave.length() != txt_a_cifrar.length()){
