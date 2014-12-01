@@ -123,16 +123,15 @@ public class MainActivity extends Activity{
 						edtxTexto.setError("Escribe el texto");
 						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
 						
-					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
-						edtxClave.setError("Escribe la clave");
-						Toast.makeText(getApplicationContext(), "'Ingresa la clave!", Toast.LENGTH_LONG).show();
+					}else if("".equals(edtxClave.getText().toString())){
+						edtxClave.setError("Ingresa la clave");
+						Toast.makeText(getApplicationContext(), "¡Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
 					try {
 						char[] resulplayfair=playfair.Cifrado(array_texto,array_clave);
 		                edtxResultado.setText(String.valueOf(resulplayfair));	
 					} catch (Exception e) {
 						// TODO: handle exception
-						Toast.makeText(getApplicationContext(), "¡asdjfncaskjcn", Toast.LENGTH_LONG).show();
 				}
 					
 					
@@ -165,19 +164,18 @@ public class MainActivity extends Activity{
 		                break;
 				case R.id.rbVigenere:
 					if("".equals(edtxTexto.getText().toString())){
+						edtxTexto.setError("Ingresa el texto");
 						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
 					}
 					else if("".equals(edtxClave.getText().toString())){
+						edtxClave.setError("Ingresa la clave");
 						Toast.makeText(getApplicationContext(), "¡Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
 					try {
 						char[] resulvigenere=lotes.Cifrado(array_texto,array_clave);
 		                edtxResultado.setText(String.valueOf(resulvigenere));
 					} catch (Exception e) {
-						if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
-							edtxClave.setError("Ingresa la clave");
-							Toast.makeText(getApplicationContext(), "¡Ingresa la clave", Toast.LENGTH_LONG).show();
-						}
+						
 					}
 					
 	                break;
