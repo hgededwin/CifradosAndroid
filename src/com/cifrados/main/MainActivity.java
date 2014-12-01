@@ -9,6 +9,7 @@ import com.cifrados.metodos.CodigoVigenere;
 import com.example.nuevo.R;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -117,20 +118,23 @@ public class MainActivity extends Activity{
 		            edtxResultado.setText(String.valueOf(resulcesar));
 					break;
 				case R.id.rbplayfair:
+					
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Escribe el texto");
 						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
+						
 					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
 						edtxClave.setError("Escribe la clave");
-						Toast.makeText(getApplicationContext(), "'Ingresa la clave!", Toast.LENGTH_LONG);
+						Toast.makeText(getApplicationContext(), "'Ingresa la clave!", Toast.LENGTH_LONG).show();
 					}
 					try {
 						char[] resulplayfair=playfair.Cifrado(array_texto,array_clave);
 		                edtxResultado.setText(String.valueOf(resulplayfair));	
 					} catch (Exception e) {
 						// TODO: handle exception
-						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
-					}
+						Toast.makeText(getApplicationContext(), "¡asdjfncaskjcn", Toast.LENGTH_LONG).show();
+				}
+					
 					
 	                break;
 				case R.id.rbVernam:
@@ -163,11 +167,19 @@ public class MainActivity extends Activity{
 					if("".equals(edtxTexto.getText().toString())){
 						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
 					}
-					if("".equals(edtxClave.getText().toString())){
+					else if("".equals(edtxClave.getText().toString())){
 						Toast.makeText(getApplicationContext(), "¡Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
-					char[] resulvigenere=lotes.Cifrado(array_texto,array_clave);
-	                edtxResultado.setText(String.valueOf(resulvigenere));
+					try {
+						char[] resulvigenere=lotes.Cifrado(array_texto,array_clave);
+		                edtxResultado.setText(String.valueOf(resulvigenere));
+					} catch (Exception e) {
+						if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+							edtxClave.setError("Ingresa la clave");
+							Toast.makeText(getApplicationContext(), "¡Ingresa la clave", Toast.LENGTH_LONG).show();
+						}
+					}
+					
 	                break;
 				default:
 						Toast.makeText(getApplicationContext(), "No has seleccionado ningún método", Toast.LENGTH_LONG).show();
