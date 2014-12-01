@@ -70,6 +70,8 @@ public class MainActivity extends Activity{
 		edtxResultado.setEnabled(false);
 		edtxClave.setEnabled(false);
 		
+		//Esto está en pruebas.
+		
 		edtxResultado.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
@@ -87,21 +89,7 @@ public class MainActivity extends Activity{
 				return true;
 			}
 		});
-		
-//		edtxResultado.setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				if(!edtxResultado.getText().toString().trim().isEmpty()){
-//					ClipboardManager clipboard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
-//					ClipData clip = ClipData.newPlainText("Texto", edtxResultado.getText().toString());
-//					clipboard.setPrimaryClip(clip);
-//				}else{
-//					Toast.makeText(getApplicationContext(), "No hay nada qué copiar", Toast.LENGTH_SHORT).show();
-//				}
-//			}
-//		});
+		//^^^^^^^^^^^^^^^^^^^^^^
 		
 		rdgeneral.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
