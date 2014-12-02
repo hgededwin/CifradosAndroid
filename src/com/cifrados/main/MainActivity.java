@@ -7,6 +7,7 @@ import com.cifrados.metodos.CodigoPlayFair;
 import com.cifrados.metodos.CodigoVernam;
 import com.cifrados.metodos.CodigoVigenere;
 import com.example.nuevo.R;
+
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -16,20 +17,17 @@ import android.text.InputType;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 
@@ -47,7 +45,7 @@ public class MainActivity extends Activity{
     int [][]matrizA = new int [25][25];
     
     EditText edtxTexto, edtxClave;
-    TextView edtxResultado;
+    TextView edtxResultado, txtoSubneteo;
     Button btnCifrartxt, btnDescifrartxt;
     TextWatcher txtWatcher;
     
@@ -72,6 +70,7 @@ public class MainActivity extends Activity{
 		rdbVigenere = (RadioButton)findViewById(R.id.rbVigenere);
 		rdgeneral = (RadioGroup)findViewById(R.id.rdgGrupo);
 		edtxClave.setEnabled(false);
+		
 		
 		edtxResultado.setInputType(InputType.TYPE_NULL);
 		edtxResultado.setOnTouchListener(new OnTouchListener() {
@@ -147,7 +146,6 @@ public class MainActivity extends Activity{
 					}
 				    char[] resulcesar=cesar.Cifrado(array_texto); 
 		            edtxResultado.setText(String.valueOf(resulcesar));
-		            edtxClave.setError(null);
 		            edtxTexto.setError(null);
 					break;
 				case R.id.rbplayfair:
@@ -245,7 +243,6 @@ public class MainActivity extends Activity{
 					}
 					 char[] resulcesar=cesar.Descifrado(array_texto);
 			            edtxResultado.setText(String.valueOf(resulcesar));
-			            edtxClave.setError(null);
 			            edtxTexto.setError(null);
 					break;
 				case R.id.rbplayfair:

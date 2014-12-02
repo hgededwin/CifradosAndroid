@@ -43,7 +43,6 @@ public class ValidarPatron {
 	        for (int i = 0; i < tamC2; i++) {
 	            System.out.print(""+clave2[i]); 
 	        }
-//	        System.out.println("\nLongitud de Patron: "+clave2.length);
 	        return clave2;
 	    }
 	    
@@ -113,7 +112,6 @@ public class ValidarPatron {
 	        for (int i = 0; i < tamC2; i++) {
 	            System.out.print(""+clave2[i]); 
 	        }
-//	        System.out.println("\nLongitud de Patron: "+clave2.length);
 	        return clave2;
 	    }
 

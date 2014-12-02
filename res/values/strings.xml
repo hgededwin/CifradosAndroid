@@ -3,5 +3,16 @@
 
     <string name="app_name">Nuevo</string>
     <string name="hello_world">Hello world!</string>
-
+    <string name="txt">TEXTO:</string>
+    <string name="hinttxto">Ingresa el texto aquí</string>
+    <string name="txtclave">CLAVE:</string>
+    <string name="thintclave">Ingresa la clave aquí</string>
+    <string name="spcesar">CÉSAR</string>
+    <string name="spplayfair">PLAYFAIR</string>
+    <string name="spvigenere">VIGENERE</string>
+    <string name="spvernam">VERNAM</string>
+    <string name="btnCifrar">CIFRAR</string>
+    <string name="btnDescifrar">DESCIFRAR</string>
+    <string name="txtresul">RESULTADO:</string>
+    
 </resources>
