@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Nuevo</string>
+    <string name="app_name">Cifrados</string>
     <string name="hello_world">Hello world!</string>
     <string name="txt">TEXTO:</string>
     <string name="hinttxto">Ingresa el texto aquí</string>

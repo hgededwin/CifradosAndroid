@@ -22,7 +22,6 @@ public class DeterminanteMatriz {
          int [][]temp=new int[tamMatriz-1][tamMatriz-1];
          int cont1=0;
          int cont2=0;
-//         System.out.println("Cofactor["+(i+1)+"]["+(j+1)+"]:");
          for (int k = 0; k < tamMatriz; k++) {
              if (k!=i) {
                  cont2=0;
@@ -35,12 +34,6 @@ public class DeterminanteMatriz {
                  cont1++;
              }
          }
-//         for (int k = 0; k < temp.length; k++) {
-//             for (int l = 0; l < temp.length; l++) {
-//                 System.out.print(""+temp[k][l]+" ");
-//             }
-//             System.out.println("");
-//         }
          
          return temp;
      }
@@ -56,7 +49,6 @@ public class DeterminanteMatriz {
                   A[j][i] = (int)Math.pow(-1,i+j)*subMatrizC(i,j,M,temp,d);
              }
         }
-//        System.out.print("\nDeterminante Cofactores: "+deterMatrizC(M,d)+"\n");
         return A;
      }
      
