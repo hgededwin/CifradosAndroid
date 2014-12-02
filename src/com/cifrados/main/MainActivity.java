@@ -142,19 +142,18 @@ public class MainActivity extends Activity{
 				case R.id.rbCesar:
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Escribe el texto");
-						Toast.makeText(getApplicationContext(), "Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
 					}
 				    char[] resulcesar=cesar.Cifrado(array_texto); 
 		            edtxResultado.setText(String.valueOf(resulcesar));
-		            edtxTexto.setError(null);
 					break;
 				case R.id.rbplayfair:
 					
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Escribe el texto");
-						Toast.makeText(getApplicationContext(), "Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
 						
-					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+					}else if("".equals(edtxClave.getText().toString())){
 						edtxClave.setError("Ingresa la clave");
 						Toast.makeText(getApplicationContext(), "Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
@@ -162,7 +161,6 @@ public class MainActivity extends Activity{
 						char[] resulplayfair=playfair.Cifrado(array_texto,array_clave);
 		                edtxResultado.setText(String.valueOf(resulplayfair));	
 		                edtxClave.setError(null);
-			            edtxTexto.setError(null);
 					} catch (Exception e) {
 						// TODO: handle exception
 				}
@@ -170,7 +168,7 @@ public class MainActivity extends Activity{
 	                break;
 				case R.id.rbVernam:
 					if("".equals(edtxTexto.getText().toString())){
-						Toast.makeText(getApplicationContext(), "Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
 						edtxTexto.setError("Escribe el texto");
 		            }else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
 		            	Toast.makeText(getApplicationContext(), "Ingresa la clave", Toast.LENGTH_LONG).show();
@@ -180,6 +178,7 @@ public class MainActivity extends Activity{
 		            }else if(txt_clave.length()>10){
 		            	Toast.makeText(getApplicationContext(), "La longitud no puede ser mayor a 10", Toast.LENGTH_LONG).show();
 		            }else if(txt_clave.length() != txt_a_cifrar.length()){
+		            	edtxClave.setError("Escribe la clave");
 		            	Toast.makeText(getApplicationContext(), "El texto y la clave deben tener la misma longitud", Toast.LENGTH_LONG).show();
 		            }else{
 		                String[] resul=vernam.Cifrado(array_texto,array_clave);
@@ -195,14 +194,13 @@ public class MainActivity extends Activity{
 		                }
 		                edtxResultado.setText(String.valueOf(resul2));
 		                edtxClave.setError(null);
-			            edtxTexto.setError(null);
 		            }
 		                break;
 				case R.id.rbVigenere:
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Ingresa el texto");
-						Toast.makeText(getApplicationContext(), "Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
-					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a cifrar!", Toast.LENGTH_LONG).show();
+					}else if("".equals(edtxClave.getText().toString())){
 						edtxClave.setError("Ingresa la clave");
 						Toast.makeText(getApplicationContext(), "Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
@@ -210,10 +208,8 @@ public class MainActivity extends Activity{
 						char[] resulvigenere=lotes.Cifrado(array_texto,array_clave);
 		                edtxResultado.setText(String.valueOf(resulvigenere));
 		                edtxClave.setError(null);
-			            edtxTexto.setError(null);
 					} catch (Exception e) {
-						Toast.makeText(getApplicationContext(), "Bip...", Toast.LENGTH_LONG).show();
-					}
+						}
 	                break;
 				default:
 						Toast.makeText(getApplicationContext(), "No has seleccionado ningun metodo", Toast.LENGTH_LONG).show();
@@ -237,17 +233,16 @@ public class MainActivity extends Activity{
 				case R.id.rbCesar:
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Ingresa el texto");
-						Toast.makeText(getApplicationContext(), "Ingresa el texto a descifrar!", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a descifrar!", Toast.LENGTH_LONG).show();
 					}
 					 char[] resulcesar=cesar.Descifrado(array_texto);
 			            edtxResultado.setText(String.valueOf(resulcesar));
-			            edtxTexto.setError(null);
 					break;
 				case R.id.rbplayfair:
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Ingresa el texto");
-						Toast.makeText(getApplicationContext(), "Ingresa el texto a descifrar!", Toast.LENGTH_LONG).show();
-					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a descifrar!", Toast.LENGTH_LONG).show();
+					}else if("".equals(edtxClave.getText().toString())){
 						edtxClave.setError("Ingresa la clave");
 						Toast.makeText(getApplicationContext(), "Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
@@ -255,15 +250,14 @@ public class MainActivity extends Activity{
 						char[] resulplayfair=playfair.Descifrado(array_texto,array_clave);
 		                edtxResultado.setText(String.valueOf(resulplayfair));
 		                edtxClave.setError(null);
-			            edtxTexto.setError(null);
 					} catch (Exception e) {
 				}
 	                break;
 				case R.id.rbVigenere:
 					if("".equals(edtxTexto.getText().toString())){
 						edtxTexto.setError("Escribe el texto");
-						Toast.makeText(getApplicationContext(), "Escribe el texto a descifrar", Toast.LENGTH_LONG).show();
-					}else if(edtxTexto.equals(edtxTexto.getText().toString()) && "".equals(edtxClave.getText().toString())){
+						Toast.makeText(getApplicationContext(), "¡Ingresa el texto a descifrar", Toast.LENGTH_LONG).show();
+					}else if("".equals(edtxClave.getText().toString())){
 						edtxClave.setError("Ingresa la clave");
 						Toast.makeText(getApplicationContext(), "Ingresa la clave", Toast.LENGTH_LONG).show();
 					}
@@ -271,7 +265,6 @@ public class MainActivity extends Activity{
 						char[] resulvigenere=lotes.Descifrado(array_texto,array_clave);
 		                edtxResultado.setText(String.valueOf(resulvigenere));
 		                edtxClave.setError(null);
-			            edtxTexto.setError(null);
 					} catch (Exception e) {
 						
 					}
