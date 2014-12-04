@@ -72,7 +72,7 @@ public class ValidarPatron {
 	                    no++;
 	                }
 	        }
-	        System.out.print("\nCorrecciones en Patron= "+no);
+	        System.out.print("\nPatron= "+no);
 	        
 	        return no;
 	    }

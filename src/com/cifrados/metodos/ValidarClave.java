@@ -62,7 +62,7 @@ public class ValidarClave {
 	                    no++;
 	                }
 	        }
-	        System.out.print("\nCorrecciones en Clave= "+no);
+	        System.out.print("\nClave= "+no);
 	        
 	        return no;
 	    }
